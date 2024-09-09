@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        php-version: ['8.0', '8.1', '8.2']  # Define the PHP versions you want to test against
+        php-version: ['8.3']  # Define the PHP versions you want to test against
 
     steps:
       # Checkout the code from the repository
