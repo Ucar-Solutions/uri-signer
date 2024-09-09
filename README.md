@@ -8,7 +8,7 @@ A URL signer implementation in **PHP** that generates secure, signed URLs with a
 
 ## Features
 
-- Sign the full URI or only query parameters
+- Sign a given URI
 - Include an expiration date as part of the signature
 - Ensure URL integrity and prevent unauthorized modifications
 - Easy integration with **Laminas** or other PHP-based frameworks
@@ -25,49 +25,46 @@ composer require ucarsolutions/uri-signer
 
 ### Sign URL with Expiration Date
 
-You can sign a full URL or only query parameters and include an expiration date. The URL will be valid until the specified expiration time, after which it becomes invalid.
+You can sign the uri with: 
 
 ```php
-use Ucarsolutions\UriSigner\Service\SignerService;
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
 
-$uri = new Laminas\Diactoros\Uri('https://example.com/resource');
-$key = new Ucarsolutions\UriSigner\Entity\Key('your-secret-key');
+$signerService = new \Ucarsolutions\UriSigner\Service\UriSignerService(
+    new \Ucarsolutions\UriSigner\Resolver\DefaultParameterNameResolver(),
+    new \doganoo\DIP\DateTime\DateTimeService(),
+    new \Psr\Log\NullLogger()
+);
 
-$signer = new SignerService();
+$key = new class implements \Ucarsolutions\UriSigner\Entity\KeyInterface {
 
-// Sign the entire URI with expiration
-$signedUri = $signer->signUri($uri, $key);
-
-// Result: https://example.com/resource?__us__url__signer__signature=xyz&__us__url__signer__expire_date=1234567890
-echo $signedUri;
+    public function getKey(): string
+    {
+        return "t0psecret";
+    }
+};
+$uri = $signerService->sign(
+    new \Laminas\Diactoros\Uri("https://example.com"),
+    $key
+);
+dump((string)$uri); // https://example.com/?__us_signature=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3VjYXItc29sdXRpb25zLmRlL3VyaS1zaWduZXIiLCJleHAiOjE3MjU5MDYzMDQsInN1YiI6IlNpZ25lZCBVUkwiLCJ1cmwiOiJodHRwczovL2V4YW1wbGUug29tIiwidWlkIjoiNzM3YTgwNzAtZGU5MS00MTQ3LWohYmMtZTY1OWZiOGZmNWZyIn0.CH7E-fHYhtfGHUljB85dIWL-ZYGr8wRMVef0gY_SRLE
 ```
-Example Signing Only Query Paramters
+Example Verifying with `$uri` above:
 
 ```php
-use Ucarsolutions\UriSigner\Service\SignerService;
-
-$uri = new Laminas\Diactoros\Uri('https://example.com/resource?foo=bar');
-$key = new Ucarsolutions\UriSigner\Entity\Key('your-secret-key');
-
-$signer = new SignerService();
-
-// Sign the query parameters with expiration
-$signedUri = $signer->signParameters($uri, $key);
-
-// Result: https://example.com/resource?foo=bar&__us__url__signer__signature=xyz&__us__url__signer__expire_date=1234567890
-echo $signedUri;
+<?php
+$result = $signerService->verify($uri,$key);
+dump($result->isVerified());
 ```
 
 ## Expiration
-The expiration date is added to the URL as a query parameter and is included in the signed data to ensure the URL becomes invalid after the expiration time.
+The expiration date is added to the signature and is included in the signed data to ensure the URL becomes invalid after the expiration time.
 
 If no expiration date is provided, a default of 3 minutes from the current time is used.
 
 ## Configuration
 You can configure the expiration time and the secret key for signing URLs.
-
-## Default Expiration Time
-You can change the default expiration time from 3 minutes to any other value by adjusting the configuration in the service or manually passing a DateTimeInterface to the sign function.
 
 ## Tests
 Run the tests with PHPUnit:
