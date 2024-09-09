@@ -42,4 +42,4 @@ jobs:
 
       # Run the tests
       - name: Run tests with PHPUnit
-        run: ./vendor/bin/phpunit --testdox
+        run: ./vendor/bin/phpunit test
