@@ -37,7 +37,7 @@ jobs:
 
       # Run PHPStan for static analysis
       - name: Run PHPStan
-        run: ./vendor/bin/phpstan analyse --no-progress --level=max
+        run: ./vendor/bin/phpstan analyse -c phpstan.neon src/ test/ --level 9 --memory-limit=2G
         continue-on-error: false # Fail if PHPStan finds issues
 
       # Run the tests
