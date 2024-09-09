@@ -1,0 +1,43 @@
+{
+  "name": "ucarsolutions/uri-signer",
+  "description": "A minimal package for securely signing PSR-15 URIs in PHP applications.",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Ucarsolutions\\UriSigner\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Test\\Ucarsolutions\\UriSigner\\": "test"
+    }
+  },
+  "authors": [
+    {
+      "name": "Doğan Uçar",
+      "email": "dogan@dogan-ucar.de"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "psr/http-server-handler": "1.0.2",
+    "firebase/php-jwt": "^6.10",
+    "ramsey/uuid": "^4.7",
+    "doganoo/di-services": "^0.0.50",
+    "psr/log": "^3.0"
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^7.1",
+    "laminas/laminas-diactoros": "^3.3",
+    "phpunit/phpunit": "^11.3",
+    "phpstan/phpstan": "^1.12"
+  },
+  "scripts": {
+    "phpstan": "./vendor/bin/phpstan analyse -c phpstan.neon src/ test/ --level 9 --memory-limit=2G",
+    "test": [
+      "Composer\\Config::disableProcessTimeout",
+      "./vendor/bin/phpunit -d memory_limit=-1"
+    ]
+  }
+}

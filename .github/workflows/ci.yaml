@@ -1,0 +1,45 @@
+name: Run Unit Tests
+
+on:
+  # Trigger the workflow on push to any branch
+  push:
+    branches:
+      - '*'  # Runs on every branch
+  # Trigger the workflow on pull requests to any branch
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-version: ['8.0', '8.1', '8.2']  # Define the PHP versions you want to test against
+
+    steps:
+      # Checkout the code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up PHP with required version
+      - name: Setup PHP ${{ matrix.php-version }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: mbstring, intl, dom  # Add required PHP extensions
+          tools: composer  # Ensure composer is available
+
+      # Install dependencies via composer
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      # Run PHPStan for static analysis
+      - name: Run PHPStan
+        run: ./vendor/bin/phpstan analyse --no-progress --level=max
+        continue-on-error: false # Fail if PHPStan finds issues
+
+      # Run the tests
+      - name: Run tests with PHPUnit
+        run: ./vendor/bin/phpunit --testdox
