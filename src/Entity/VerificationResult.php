@@ -28,7 +28,7 @@ declare(strict_types=1);
  *
  */
 
-namespace Ucarsolutions\UriSigner\Entity;
+namespace UcarSolutions\UriSigner\Entity;
 
 class VerificationResult implements VerificationResultInterface
 {

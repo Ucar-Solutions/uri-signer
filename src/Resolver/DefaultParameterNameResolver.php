@@ -28,7 +28,7 @@ declare(strict_types=1);
  *
  */
 
-namespace Ucarsolutions\UriSigner\Resolver;
+namespace UcarSolutions\UriSigner\Resolver;
 
 class DefaultParameterNameResolver implements ParameterNameResolverInterface
 {

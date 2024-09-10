@@ -28,7 +28,7 @@ declare(strict_types=1);
  *
  */
 
-namespace Test\Ucarsolutions\UriSigner;
+namespace Test\UcarSolutions\UriSigner;
 
 use DateTimeImmutable;
 use doganoo\DIP\DateTime\DateTimeService;
@@ -36,11 +36,11 @@ use Laminas\Diactoros\Uri;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\UriInterface;
 use Psr\Log\NullLogger;
-use Ucarsolutions\UriSigner\Entity\KeyInterface;
-use Ucarsolutions\UriSigner\Resolver\DefaultParameterNameResolver;
-use Ucarsolutions\UriSigner\Resolver\ParameterNameResolverInterface;
-use Ucarsolutions\UriSigner\Service\UriSignerService;
-use Ucarsolutions\UriSigner\Service\UriSignerServiceInterface;
+use UcarSolutions\UriSigner\Entity\KeyInterface;
+use UcarSolutions\UriSigner\Resolver\DefaultParameterNameResolver;
+use UcarSolutions\UriSigner\Resolver\ParameterNameResolverInterface;
+use UcarSolutions\UriSigner\Service\UriSignerService;
+use UcarSolutions\UriSigner\Service\UriSignerServiceInterface;
 
 class UriSignerServiceTest extends TestCase
 {

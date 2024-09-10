@@ -5,12 +5,12 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Ucarsolutions\\UriSigner\\": "src/"
+      "UcarSolutions\\UriSigner\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Test\\Ucarsolutions\\UriSigner\\": "test"
+      "Test\\UcarSolutions\\UriSigner\\": "test"
     }
   },
   "authors": [
@@ -37,7 +37,7 @@
     "phpstan": "./vendor/bin/phpstan analyse -c phpstan.neon src/ test/ --level 9 --memory-limit=2G",
     "test": [
       "Composer\\Config::disableProcessTimeout",
-      "./vendor/bin/phpunit -d memory_limit=-1"
+      "./vendor/bin/phpunit test -d memory_limit=-1"
     ]
   }
 }

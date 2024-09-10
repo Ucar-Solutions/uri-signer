@@ -31,13 +31,13 @@ You can sign the uri with:
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
-$signerService = new \Ucarsolutions\UriSigner\Service\UriSignerService(
-    new \Ucarsolutions\UriSigner\Resolver\DefaultParameterNameResolver(),
+$signerService = new \UcarSolutions\UriSigner\Service\UriSignerService(
+    new \UcarSolutions\UriSigner\Resolver\DefaultParameterNameResolver(),
     new \doganoo\DIP\DateTime\DateTimeService(),
     new \Psr\Log\NullLogger()
 );
 
-$key = new class implements \Ucarsolutions\UriSigner\Entity\KeyInterface {
+$key = new class implements \UcarSolutions\UriSigner\Entity\KeyInterface {
 
     public function getKey(): string
     {

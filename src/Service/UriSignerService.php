@@ -28,7 +28,7 @@ declare(strict_types=1);
  *
  */
 
-namespace Ucarsolutions\UriSigner\Service;
+namespace UcarSolutions\UriSigner\Service;
 
 use DateTimeImmutable;
 use DateTimeInterface;
@@ -38,12 +38,12 @@ use Firebase\JWT\Key;
 use Psr\Http\Message\UriInterface;
 use Psr\Log\LoggerInterface;
 use Ramsey\Uuid\Uuid;
-use Ucarsolutions\UriSigner\Entity\KeyInterface;
-use Ucarsolutions\UriSigner\Entity\VerificationResult;
-use Ucarsolutions\UriSigner\Entity\VerificationResultInterface;
-use Ucarsolutions\UriSigner\Exception\InvalidUrlException;
-use Ucarsolutions\UriSigner\Exception\SignatureNotFoundException;
-use Ucarsolutions\UriSigner\Resolver\ParameterNameResolverInterface;
+use UcarSolutions\UriSigner\Entity\KeyInterface;
+use UcarSolutions\UriSigner\Entity\VerificationResult;
+use UcarSolutions\UriSigner\Entity\VerificationResultInterface;
+use UcarSolutions\UriSigner\Exception\InvalidUrlException;
+use UcarSolutions\UriSigner\Exception\SignatureNotFoundException;
+use UcarSolutions\UriSigner\Resolver\ParameterNameResolverInterface;
 use UnexpectedValueException;
 
 /**

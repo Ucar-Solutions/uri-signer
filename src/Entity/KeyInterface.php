@@ -28,7 +28,7 @@ declare(strict_types=1);
  *
  */
 
-namespace Ucarsolutions\UriSigner\Entity;
+namespace UcarSolutions\UriSigner\Entity;
 
 /**
  * Key entity interface - implementing this class is needed

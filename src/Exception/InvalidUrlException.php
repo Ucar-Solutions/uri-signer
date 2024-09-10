@@ -29,7 +29,7 @@ declare(strict_types=1);
  */
 
 
-namespace Ucarsolutions\UriSigner\Exception;
+namespace UcarSolutions\UriSigner\Exception;
 
 class InvalidUrlException extends UriSignerException
 {

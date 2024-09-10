@@ -28,12 +28,12 @@ declare(strict_types=1);
  *
  */
 
-namespace Ucarsolutions\UriSigner\Service;
+namespace UcarSolutions\UriSigner\Service;
 
 use DateTimeInterface;
 use Psr\Http\Message\UriInterface;
-use Ucarsolutions\UriSigner\Entity\KeyInterface;
-use Ucarsolutions\UriSigner\Entity\VerificationResultInterface;
+use UcarSolutions\UriSigner\Entity\KeyInterface;
+use UcarSolutions\UriSigner\Entity\VerificationResultInterface;
 
 /**
  * Url Signer interface, used to sign uris with a given key
