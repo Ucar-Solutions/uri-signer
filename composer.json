@@ -1,6 +1,6 @@
 {
   "name": "ucarsolutions/uri-signer",
-  "description": "A minimal package for securely signing PSR-15 URIs in PHP applications.",
+  "description": "A minimal package for securely signing PSR-7 URIs in PHP applications.",
   "type": "library",
   "license": "MIT",
   "autoload": {
@@ -21,7 +21,6 @@
   ],
   "minimum-stability": "stable",
   "require": {
-    "psr/http-server-handler": "1.0.2",
     "firebase/php-jwt": "^6.10",
     "ramsey/uuid": "^4.7",
     "doganoo/di-services": "^0.0.50",
