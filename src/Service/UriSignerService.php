@@ -32,7 +32,7 @@ namespace UcarSolutions\UriSigner\Service;
 
 use DateTimeImmutable;
 use DateTimeInterface;
-use doganoo\DI\DateTime\IDateTimeService;
+use doganoo\DI\DateTime\DateTimeServiceInterface;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use Psr\Http\Message\UriInterface;
@@ -55,7 +55,7 @@ class UriSignerService implements UriSignerServiceInterface
 
     public function __construct(
         private readonly ParameterNameResolverInterface $parameterNameResolver,
-        private readonly IDateTimeService               $dateTimeService,
+        private readonly DateTimeServiceInterface       $dateTimeService,
         private readonly LoggerInterface                $logger
     )
     {

@@ -23,7 +23,7 @@
   "require": {
     "firebase/php-jwt": "^6.10",
     "ramsey/uuid": "^4.7",
-    "doganoo/di-services": "^0.0.50",
+    "doganoo/di-services": "^0",
     "psr/log": "^3.0"
   },
   "require-dev": {
