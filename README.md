@@ -8,7 +8,7 @@ A URL signer implementation in **PHP** that generates secure, signed URLs with a
 
 ## Features
 
-- Sign a given URI
+- Sign a given URI or an array of parameters
 - Include an expiration date as part of the signature
 - Ensure URL integrity and prevent unauthorized modifications
 - Easy integration with **Laminas** or other PHP-based frameworks
@@ -55,6 +55,40 @@ Example Verifying with `$uri` above:
 ```php
 <?php
 $result = $signerService->verify($uri,$key);
+dump($result->isVerified());
+```
+
+Same for parameters:
+
+```php
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+
+$signerService = new \UcarSolutions\UriSigner\Service\ParameterSignerService(
+    new \doganoo\DIP\DateTime\DateTimeService(),
+    new \Psr\Log\NullLogger()
+);
+
+$key = new class implements \UcarSolutions\UriSigner\Entity\KeyInterface {
+
+    public function getKey(): string
+    {
+        return "t0psecret";
+    }
+};
+$token = $signerService->sign(
+    ['leadId' => '123', 'list' => 'marketing', 'aud' => 'dmarcflow.com'],
+    $key
+);
+dump($token);
+ // eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3VjYXItc29sdXRpb25zLmRlL3VyaS1zaWduZXIiLCJpYXQiOjE3NTg2OTIwMDUsImV4cCI6MTc1ODY5MjE4NSwic3ViIjoiU2lnbmVkIFBheWxvYWQiLCJqdGkiOiJhNjRlNGE4Yi0wMWUzLTRjZDEtYWRlZi02ZmQzNjY1Y2E0ZDYiLCJ1aWQiOiJlZjM1YzEwNC1lYzM2LTQ3YTItOTE2Ni1lOGJiNmU0MThiMzIiLCJkYXRhIjp7ImxlYWRJZCI6IjEyMyIsImxpc3QiOiJtYXJrZXRpbmciLCJhdWQiOiJkbWFyY2Zsb3cuY29tIn19.Ovt1TnqJLTXdc0fQykDxCbiLdxG0_mKASyFB2JKidbA
+```
+
+Example Verifying with `$token` above:
+
+```php
+<?php
+$result = $signerService->verify($token,$key);
 dump($result->isVerified());
 ```
 
