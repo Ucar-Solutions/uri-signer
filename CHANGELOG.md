@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.0.1] - 2025-09-24
+**Version 2.0.1 – Bugfix**
+
 ## [2.0.0] - 2025-09-24
 **Version 2.0.0 – Add ParameterSignerService which signs parameters only**
 

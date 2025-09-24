@@ -139,7 +139,7 @@ class UriSignerService implements UriSignerServiceInterface
 
             $expireDate = (new DateTimeImmutable())->setTimestamp($decoded['exp']);
             return new VerificationResult(
-                $this->dateTimeService->isExpired($expireDate)
+                !$this->dateTimeService->isExpired($expireDate)
             );
         } catch (SignatureNotFoundException|InvalidUrlException|UnexpectedValueException $e) {
             $this->logger->error('error verifying signature', ['exception' => $e]);
