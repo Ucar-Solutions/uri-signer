@@ -21,7 +21,7 @@
   ],
   "minimum-stability": "stable",
   "require": {
-    "firebase/php-jwt": "^6.10",
+    "firebase/php-jwt": "^7",
     "ramsey/uuid": "^4.7",
     "doganoo/di-services": "^0",
     "psr/log": "^3.0"
