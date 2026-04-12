@@ -35,7 +35,7 @@ final class ParameterSignerServiceTest extends TestCase
         $this->key = new class implements KeyInterface {
             public function getKey(): string
             {
-                return 't0psecret';
+                return 't0psecret-that-is-long-enough-for-hs256';
             }
         };
     }
@@ -96,7 +96,7 @@ final class ParameterSignerServiceTest extends TestCase
         $wrongKey = new class implements KeyInterface {
             public function getKey(): string
             {
-                return 'wr0ngsecret';
+                return 'wr0ngsecret-that-is-long-enough-for-hs256';
             }
         };
 

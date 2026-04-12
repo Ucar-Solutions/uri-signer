@@ -62,7 +62,7 @@ class UriSignerServiceTest extends TestCase
 
             public function getKey(): string
             {
-                return "t0psecret";
+                return "t0psecret-that-is-long-enough-for-hs256";
             }
         };
     }
